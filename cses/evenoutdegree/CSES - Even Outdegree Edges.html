@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://cses.fi/problemset/task/2179 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet " type="text/css" href="./CSES - Even Outdegree Edges_files/cses.css" id="styles">
+  <link rel="stylesheet alternate" type="text/css" href="./CSES - Even Outdegree Edges_files/cses-dark.css" id="styles-dark">
+  <meta name="theme-color" content="white" id="theme-color">
+  <script type="application/json" id="darkmode-enabled">false</script>
+  <script src="./CSES - Even Outdegree Edges_files/ui.js"></script>
+  <link rel="stylesheet" type="text/css" href="./CSES - Even Outdegree Edges_files/all.min.css">
+<link rel="stylesheet" type="text/css" href="./CSES - Even Outdegree Edges_files/prettify.css"></head>
+<body class="with-sidebar " cz-shortcut-listen="true">
+  <div class="header">
+    <div>
+      <a href="https://cses.fi/" class="logo"><img src="./CSES - Even Outdegree Edges_files/logo.png" alt="CSES"></a>
+      <a class="menu-toggle" onclick="document.body.classList.toggle(&#39;menu-open&#39;);">
+        <i class="fas fa-bars"></i>
+      </a>
+      <div class="controls">
+                <a class="account" href="https://cses.fi/user/237621">parentoni</a>
+        <span>—</span>
+                        <a href="https://cses.fi/darkmode" title="Toggle dark mode" onclick="return toggle_theme()"><i aria-label="Dark mode" class="fas fa-adjust"></i><span>Dark mode</span></a>
+                <a href="https://cses.fi/logout" title="Log out"><i aria-label="Log out" class="fas fa-sign-out-alt"></i><span>Log out</span></a>
+              </div>
+    </div>
+  </div>
+  <div class="skeleton">
+
+  <div class="navigation">
+    <div class="title-block">
+      <h3><a href="https://cses.fi/problemset/list/">CSES Problem Set</a></h3>
+      <h1>Even Outdegree Edges</h1>
+<ul class="nav">
+<li><a href="https://cses.fi/problemset/task/2179/" class="current">Task</a></li>
+<li><a href="https://cses.fi/problemset/submit/2179/">Submit</a></li>
+<li><a href="https://cses.fi/problemset/view/2179/">Results</a></li>
+<li><a href="https://cses.fi/problemset/stats/2179/">Statistics</a></li>
+<li><a href="https://cses.fi/problemset/tests/2179/">Tests</a></li>
+</ul>
+    </div>
+    <div class="sidebar"></div>
+  </div>
+
+  <div class="content-wrapper">
+
+    <div class="content">
+
+
+<title>CSES - Even Outdegree Edges</title><link rel="stylesheet" href="./CSES - Even Outdegree Edges_files/katex.min.css">
+<script defer="" src="./CSES - Even Outdegree Edges_files/katex.min.js"></script>
+<script defer="" src="./CSES - Even Outdegree Edges_files/copy-tex.min.js"></script>
+
+<script>
+addEventListener("DOMContentLoaded", function (e) {
+    const mathElements = document.getElementsByClassName("math");
+    const macros = {};
+    for (let element of mathElements) {
+        katex.render(element.textContent, element, {
+            displayMode: element.classList.contains("display"),
+            throwOnError: false,
+            globalGroup: true,
+            macros,
+        });
+    }
+});
+</script>
+<ul class="task-constraints">
+<li><b>Time limit:</b> 1.00 s</li>
+<li><b>Memory limit:</b> 512 MB</li>
+</ul>
+<input type="hidden" name="course" value="problemset">
+<input type="hidden" name="task" value="2179">
+<div class="md"><p>Given an undirected graph, your task is to choose a direction for each edge so that in the resulting directed graph each node has an even outdegree. The outdegree of a node is the number of edges coming out of that node.</p>
+<h1 id="input">Input</h1>
+<p>The first input line has two integers <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span> and <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span>: the number of nodes and edges. The nodes are numbered <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1,2,\dots,n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8389em; vertical-align: -0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord mathnormal">n</span></span></span></span></span>.</p>
+<p>After this, there are <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span> lines describing the edges. Each line has two integers <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></span> and <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>: there is an edge between nodes <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></span> and <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>.</p>
+<p>You may assume that the graph is simple, i.e., there is at most one edge between any two nodes and every edge connects two distinct nodes.</p>
+<h1 id="output">Output</h1>
+<p>Print <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span> lines describing the directions of the edges. Each line has two integers <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></span> and <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>: there is an edge from node <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></span> to node <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>. You can print any valid solution.</p>
+<p>If there are no solutions, only print "IMPOSSIBLE".</p>
+<h1 id="constraints">Constraints</h1>
+<ul>
+<li><span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le n \le 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.7804em; vertical-align: -0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 0.7719em; vertical-align: -0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8141em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></span></li>
+<li><span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mn>2</mn><mo>⋅</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le m \le 2 \cdot 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.7804em; vertical-align: -0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 0.7719em; vertical-align: -0.136em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right: 0.2222em;"></span></span><span class="base"><span class="strut" style="height: 0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8141em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></span></li>
+<li><span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 \le a,b \le n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.7804em; vertical-align: -0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 0.8889em; vertical-align: -0.1944em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.1667em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right: 0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.2778em;"></span></span><span class="base"><span class="strut" style="height: 0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span></li>
+</ul>
+<h1 id="example">Example</h1>
+<p>Input:</p>
+<pre>4 4
+1 2
+2 3
+3 4
+1 4
+</pre>
+<p>Output:</p>
+<pre>1 2
+3 2
+3 4
+1 4
+</pre></div>    </div>
+    <div class="nav sidebar">
+<h4>Additional Problems</h4>...
+<a href="https://cses.fi/problemset/task/1134">Prüfer Code<span class="task-score icon "></span></a><a href="https://cses.fi/problemset/task/1756">Acyclic Graph Edges<span class="task-score icon "></span></a><a href="https://cses.fi/problemset/task/2177">Strongly Connected Edges<span class="task-score icon "></span></a><a class="current" href="https://cses.fi/problemset/task/2179">Even Outdegree Edges<span class="task-score icon "></span></a><a href="https://cses.fi/problemset/task/2422">Multiplication Table<span class="task-score icon "></span></a><a href="https://cses.fi/problemset/task/1142">Advertisement<span class="task-score icon "></span></a><a href="https://cses.fi/problemset/task/2186">Special Substrings<span class="task-score icon "></span></a><a href="https://cses.fi/problemset/task/2229">Permutation Inversions<span class="task-score icon "></span></a>...
+<hr>    <h4>Your submissions</h4>
+
+    </div>
+</div>
+</div></body></html>

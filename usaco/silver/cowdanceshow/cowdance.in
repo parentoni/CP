@@ -1,0 +1,79 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define all(x) (x).begin(), (x).end()
+
+using ll = long long;
+using vl = vector<ll>;
+using pll = pair<ll,ll>;
+
+// functions
+void setio(string s) {freopen((s + ".in").c_str(), "r", stdin);freopen((s + ".out").c_str(), "w", stdout);}
+void yes() { cout<<"yes\n"; }
+void no() { cout<<"no\n"; }
+
+// values
+const ll inf = 1e18;
+const ll mod = 1000000007;
+
+ll n, t;
+vl cows;
+
+bool possible(ll k) {
+  if (k > n) return true;
+
+  proirity_queue<ll> stage;
+  for (int i=0;i<k;i++){
+    stage.insert(cows[i]);
+  }
+
+  ll curr = k, s = 0;
+
+  while(!stage.empty()){
+
+    multiset<ll> new_stage;
+    auto it = stage.begin(); s += *it;
+    ll add = 1;
+
+    for (auto el = ++stage.begin();el != stage.end(); ++el){
+      if (*el - *it > 0) {new_stage.insert(*el - *it);}
+      else add++;
+    }
+
+    for (int i=curr;i < curr+add;i++){
+      if (i >= n) continue;
+      new_stage.insert(cows[i]);
+    }
+    
+
+    curr = curr+add;
+    stage = new_stage;
+  }
+
+  return s <= t;
+}
+
+ll first_true(ll lo, ll hi, function<bool(ll)> f) {
+  
+  while(lo < hi) {
+    ll med = lo + (hi - lo) /2;
+    if (f(med)){
+      hi = med;
+    } else {
+      lo = med + 1;
+    }
+  }
+  return lo;
+
+}
+int main() {
+  ios::sync_with_stdio(0);
+  cin.tie(0);
+  setio("cowdance");
+  
+  cin >> n >> t;
+  cows.resize(n);
+  for (auto &el: cows) cin >> el;
+
+  cout << first_true(1, n, possible) << endl;
+}
