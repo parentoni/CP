@@ -24,10 +24,49 @@ double RAD_to_DEG (double r) {return r*180.0/ PI;}
 // values
 const ll INF = 1e18;
 const ll MOD = 1000000007;
+const ll MAX_N = 100;
+
+ll dx[4] = {1,-1,0,0}, dy[4] = {0,0,1,-1};
+ll b[MAX_N][MAX_N];
+ll d[MAX_N][MAX_N][3];
+ll n, t;
 
 int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
-  //setIO("");
+  setIO("visitfj");
+  cin >> n >> t;
 
+  for (int i=0;i<n;i++) {
+    for (int j=0;j<n;j++) {
+      cin >> b[i][j]; 
+      for (int c=0;c<3;c++) d[i][j][c] = INF;
+    }
+  }
+
+  using T = pair<ll, pair<pll, ll>>; // p.f - cost; p.s.f - cords; p.s.s - steps taken mod 3;
+  priority_queue<T, vector<T>, greater<T>> q; q.push({0, {{0,0}, 0}});
+
+  d[0][0][0] = 0;
+  
+  while(q.size()) {
+    T a = q.top(); q.pop();
+    if (d[a.s.f.f][a.s.f.s][a.s.s]!=a.f) continue;
+    for (int i=0;i<4;i++) {
+      ll x = a.s.f.f + dx[i], y = a.s.f.s + dy[i];
+      if (x < 0 || x >= n || y < 0 || y >= n) continue;
+      ll cost = d[a.s.f.f][a.s.f.s][a.s.s] + t + ((a.s.s+1) % 3 == 0?b[x][y]:0);
+      if (d[x][y][(a.s.s+1)%3] > cost) {
+        d[x][y][(a.s.s+1)%3] = cost;
+        q.push({cost, {{x,y}, ((a.s.s+1)%3)}});
+      }
+    }
+  }
+
+
+  ll ans = INF;
+  for (int i=0;i<3;i++) {
+    ans = min(ans, d[n-1][n-1][i]);
+  }
+  cout << ans << endl;
 }

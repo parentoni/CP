@@ -29,6 +29,15 @@ const ll MAX_N = 2500;
 ll n, m;
 vector<pll> adj[MAX_N+1];
 
+bool incycle[MAX_N+1], visited[MAX_N+1];
+
+void dfs(ll x) {
+  if (visited[x]) return;
+  visited[x] = true;
+  for (auto u: adj[x]) dfs(u.f);
+}
+
+
 int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
@@ -43,18 +52,24 @@ int main() {
   vl d(MAX_N+1, INF);
   d[1] = 0;
   int i=0;
-  bool mod = false, targetmod = false;
+  vl cycle;
+  bool mod = false;
+
   for (;;i++) {
-    if (i > n) break;
     mod = false;
-    targetmod = false;
     for (int j=1;j<=n;j++) {
       if (d[j] == INF) continue;
       for (auto &[v, w]: adj[j]) {
         if (d[v] > d[j] + w) {
-          cout << j << " " << v << " " << i << endl;
-          if (v == n || v == 1) targetmod = true;
-          d[v] = d[j] + w; mod = true;
+          if (i >= n) {
+            if (incycle[v]) continue;
+            mod = true;
+            incycle[v] = true;
+          } else {
+            mod = true;
+          }
+
+          d[v] = d[j] + w;
         }
       }
     }
@@ -62,7 +77,11 @@ int main() {
     if (mod == false) break;
   }
 
-  if (i > n && targetmod) {
+  for (int i=1;i<=n;i++) {
+    if (!visited[i] && incycle[i]) dfs(i);
+  }
+
+  if (i > n && visited[n]) {
     cout << -1 << endl;
   } else {
     cout << d[n]*-1 << endl;

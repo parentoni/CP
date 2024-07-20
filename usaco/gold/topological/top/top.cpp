@@ -28,10 +28,45 @@ double RAD_to_DEG (double r) {return r*180.0/ PI;}
 // values
 const ll INF = 1e18;
 const ll MOD = 1000000007;
+const ll MAXN = 1e5;
+
+ll n, m, state[MAXN];
+vl adj[MAXN], top;
+
+bool valid = true;
+void dfs(ll x) {
+  if (state[x] == 2) return;
+  if (state[x] == 1) {
+    valid = false; return;
+  }
+
+  state[x] = 1;
+  for (auto u: adj[x]) {
+    dfs(u);
+  }
+
+  state[x] = 2;
+  top.push_back(x); 
+}
 
 int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
-  //setIO("");
+
+  cin >> n >> m;
+  for (int i=0;i<m;i++) {
+    ll a, b; cin >> a >> b;
+    adj[a].push_back(b);
+  }
+
+  for (int i=1;i<=n;i++) {
+    if (state[i] != 0) continue;
+    dfs(i);
+  }
+
+  reverse(all(top));
+  if (!valid) cout << "Sandro fails." << endl;
+  else print(top);
+
 
 }

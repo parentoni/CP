@@ -32,6 +32,19 @@ const ll MOD = 1000000007;
 int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
-  //setIO("");
 
+  ll n; cin >> n;
+  Tree<ll> a; vl val;
+  for (int i=0;i<n;i++) {
+    ll t; cin >> t; a.insert(i); val.push_back(t);
+  }
+
+  for (int i=0;i<n;i++) {
+    ll t; cin >> t;
+    auto it = a.find_by_order(--t);
+    cout << val[*it] << " ";
+    a.erase(it);
+  }
+  
+  cout << endl;
 }

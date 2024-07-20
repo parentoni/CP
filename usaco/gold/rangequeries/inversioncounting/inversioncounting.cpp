@@ -29,9 +29,23 @@ double RAD_to_DEG (double r) {return r*180.0/ PI;}
 const ll INF = 1e18;
 const ll MOD = 1000000007;
 
+void solve() {
+  ll n; cin >> n;
+
+  Tree<int> a;
+  ll ans = 0;
+  for (int i=0;i<n;i++) {
+
+    ll t; cin >> t;
+    ans += i - a.order_of_key(t);
+    a.insert(t);
+  }
+
+  cout << ans << endl;
+}
 int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
-  //setIO("");
 
+  ll t; cin >> t; while(t--) solve();
 }

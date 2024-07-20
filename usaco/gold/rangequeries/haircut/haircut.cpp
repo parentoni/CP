@@ -28,10 +28,28 @@ double RAD_to_DEG (double r) {return r*180.0/ PI;}
 // values
 const ll INF = 1e18;
 const ll MOD = 1000000007;
+const ll MAXN = 1e5;
 
+ll n, ans[MAXN+1];
 int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
-  //setIO("");
+  setIO("haircut");
+
+  cin >> n;
+  Tree<pair<ll, ll>> a;
+  
+
+  for (int i=0;i<n;i++) {
+    ll t; cin >> t;
+    ans[t] += (i - a.order_of_key({t, MOD}));
+    a.insert({t,i});
+  }
+
+  ll tot = 0;
+  for (int i=0;i<n;i++) {
+    cout << tot << endl; 
+    tot += ans[i];
+  }
 
 }

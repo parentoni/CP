@@ -28,10 +28,36 @@ double RAD_to_DEG (double r) {return r*180.0/ PI;}
 // values
 const ll INF = 1e18;
 const ll MOD = 1000000007;
+const ll MAXN = 1e7;
 
+int bit[MAXN];
+vl val;
+
+void update(ll x, ll y) {
+  for (;x<=MAXN;x += (x & -x)) bit[x] += y;
+}
+
+ll query(ll x) {
+  ll s = 0;
+  for (;x;x -= (x & -x)) s += bit[x];
+  return s;
+}
+
+void solve() {
+  ll n; cin >> n; val.resize(n); for (auto &el: val) cin >> el;
+  memset(bit, 0, sizeof(bit));
+
+  ll ans = 0;
+  for (int i=0;i<n;i++) {
+    ans += i - query(val[i]);  
+    update(val[i], 1);
+  }
+
+  cout << ans << endl;
+}
 int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
-  //setIO("");
 
+  ll t; cin >> t; while(t--) solve();
 }
